@@ -1,0 +1,49 @@
+.navbar{
+    width: 100%;
+    background-color: #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 4px rgb(197, 197, 197);
+}
+.logo{
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+}
+.navbarImg{
+    width: 5vh;
+    height: 5vh;
+    margin: .5rem;
+}
+.authBtn{
+    margin-right: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    border: 1px solid rgb(0, 152, 0);
+    outline: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(0, 152, 0);
+    transition: .1s;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn:hover{
+    background-color: rgb(0, 152, 0);
+    color: white;
+}
+.profileIcon{
+    border: none;
+    outline: none;
+    margin: 0 10px;
+}
+.profileIcon img{
+    width: 41px;
+    height: 40px;
+}

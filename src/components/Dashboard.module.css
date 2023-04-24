@@ -1,0 +1,24 @@
+.dashBoard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grid{
+    width: 80%;
+    margin: 20px 10px;
+    display: grid;
+    column-gap: 70px;
+    grid-template-columns: 30% 30% 30%;
+}
+@media screen and (max-width:1200px) {
+    .grid{
+        width: 90%;
+        grid-template-columns: 45% 45%;
+    }
+}
+@media screen and (max-width:708px) {
+    .grid{
+        width: 90%;
+        grid-template-columns: 100%;
+    }
+}

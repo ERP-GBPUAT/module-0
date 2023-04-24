@@ -1,0 +1,38 @@
+.card{
+    /* height: 138px; */
+    /* background-color: red; */
+    margin: 18px 0;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgb(197, 197, 197);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s;
+    padding: 20px;
+    color:rgb(0, 152, 0);
+    text-decoration: none;
+    border: 1px solid rgb(0, 152, 0);
+    
+
+}
+.card:hover{
+    border: 1px solid rgb(0, 152, 0);
+    color: white;
+    background-color: rgb(0, 152, 0);
+}
+.title{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.description{
+    margin-top: 30px;
+    color: rgb(103, 103, 103);
+}
+.card:hover .description{
+    color: rgb(222, 222, 222);
+}
+@media screen and (max-width:700px) {
+    /* .card{
+        height: ;
+    } */
+}

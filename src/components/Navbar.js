@@ -2,32 +2,66 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import gbpu from "../Images/gbpu.png";
 import styles from "./Navbar.module.css";
-import person from "../Images/PersonImg.png"
+import person from "../Images/icons8-person-64.png";
 import NoteContext from "../context/Notecontext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const {loggedUser,fetchFacultyData} = useContext(NoteContext)
-  const handleProfile = ()=>{
+  const { loggedUser, fetchFacultyData,logout } = useContext(NoteContext);
+  const [openMenu,setOpenMenu] = React.useState(false);
+  const handleMenu = ()=>{
+    setOpenMenu(!openMenu)
+  }
+  const handleProfile = () => {
     // fetchuserdata();
+    setOpenMenu(false)
     fetchFacultyData();
     console.log(loggedUser);
-    navigate('/facultyDashboard')
+    navigate("/facultyDashboard");
+  };
+  const handleLogout=()=>{
+    logout()
+    setOpenMenu(false)
   }
   return (
-    <>{location.pathname==="/facultyDashboard"?<></>:(<div className={styles.navbar}>
-      <div className={styles.logo}>
-        <img className={styles.navbarImg} src={gbpu} alt="GBPUAT" />
-        <div>Govind Ballabh Pant University of Agriculture and Technology</div>
-      </div>
-      <div className={styles.authBtn}>
-        <Link to="/login" className={styles.btn}>Login</Link>
-        {loggedUser?<button onClick={handleProfile} className={styles.profileIcon}><img src={person} alt="" /></button>:""}
-      </div>
-    </div>)}
+    <>
+      {location.pathname === "/facultyDashboard" ? (
+        <></>
+      ) : (
+        <div className={styles.navbar}>
+          <div className={styles.logo}>
+            <img className={styles.navbarImg} src={gbpu} alt="GBPUAT" />
+            <div>
+              Govind Ballabh Pant University of Agriculture and Technology
+            </div>
+          </div>
+          <div className={styles.authBtn}>
+            {!localStorage.getItem("auth_token") ? (
+              <Link to="/login" className={styles.btn}>
+                Login
+              </Link>
+            ) : (
+              <></>
+            )}
+            {localStorage.getItem("auth_token") ? (
+              <div className={styles.profileBox}>
+                <div onClick={handleMenu} className={styles.profileIcon}>
+                  <img src={person} alt="" />
+                </div>
+                {openMenu?<div className={styles.toggleMenu}>
+                  <div className={styles.menuLogindetail}>Signed in as <b>Udit</b> </div>
+                  <div onClick={handleProfile} className={styles.menuOption}>Profile</div>
+                  <div className={styles.menuOption} onClick={handleLogout}>Logout</div>
+                </div>:<></>}
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      )}
     </>
-    
   );
 };
 

@@ -1,13 +1,13 @@
 :root {
   --color-white: #ffffff;
   --color-light: #f1f5f9;
-  --color-greenLight: #e7f8e9;
+  --color-greenLight: rgb(221, 239, 255);
   --color-black: #121212;
   --color-night: #001632;
 
   --color-red: #f44336;
-  --color-blue: rgb(0,152,0);
-  --color-hoverBlue: rgb(0, 105, 0);
+  --color-blue: rgb(0, 132, 255);
+  --color-hoverBlue: rgb(24, 133, 192);
   --color-gray: #80868b;
   --color-grayish: #dadce0;
 
@@ -114,7 +114,7 @@ img {
 
 /* // Main */
 .wrapper {
-  max-width: 28rem;
+  max-width: 32rem;
   width: 100%;
   margin: 2rem auto;
   padding: 2rem 2.5rem;
@@ -125,20 +125,49 @@ img {
   background: var(--color-white);
   box-shadow: var(--shadow-large);
 }
-
+.regiWrapper{
+  max-width: 56rem;
+}
+.loginWrapper{
+  width: 28rem;
+}
 .form {
   width: 100%;
-  height: auto;
+  /* height: auto; */
   margin-top: .5rem;
-}
-
-.inputControl {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+}
+.opacity{
+  opacity: 0;
+}
+.inputRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inputControl {
   margin-bottom: 1.25rem;
 }
-
+.inputControlBox {
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.radioBtnRow{
+  display: flex;
+  align-items: center;
+}
+.radioControl{
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  margin-bottom: 0;
+  padding: 0.25rem .5rem;
+  padding-left: .25rem;
+}
 .inputField {
   font-family: inherit;
   font-size: 1rem;
@@ -146,7 +175,7 @@ img {
   line-height: inherit;
   width: 100%;
   height: auto;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1rem;
   border: none;
   outline: none;
   border-radius: 2rem;
@@ -157,6 +186,16 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.inputLabel{
+  margin: 0;
+  margin-left: .5rem;
+  margin-bottom: .25rem;
+  color:#084245
+}
+.radioLabel{
+  margin: 0;
+  margin-left: .5rem;
 }
 .inputPara{
   margin: 0;
@@ -184,6 +223,17 @@ img {
   text-transform: capitalize;
   text-rendering: optimizeLegibility;
   transition: .2s;
+  margin-top: 1.25rem;
+}
+.formWrapper{
+  width: 100%;
+  /* margin: 1rem; */
+}
+.formWrapper:nth-child(1){
+  margin-right: 2rem;
+}
+.formWrapper:nth-child(3){
+  margin-left: 2rem;
 }
 .inputSubmit:hover{
     background-color: var(--color-hoverBlue);
@@ -234,4 +284,9 @@ img {
 .option:hover{
   color: white;
   background-color: var(--color-blue);
+}
+.vr{
+  background-color: #c1c1c1;
+  width: 1px;
+  height: 30rem;
 }

@@ -24,20 +24,13 @@ const Notestate = ({ children }) => {
         "Content-type": "application/json",
         token: localStorage.getItem("auth_token"),
       };
-      const resposne = await fetch(`http://localhost:8080/api/getUser`, {
+      const resposne = await fetch(`http://localhost:8080/user/getUser`, {
         method: "GET",
         headers: requestHeaders,
       });
       const u = await resposne.json();
+      console.log(u);
       localStorage.setItem("user", JSON.stringify(u.user));
-      setLoggedUser((loggedUser)=>({
-        ...loggedUser,
-        id: u.user.id,
-        email: u.user.email,
-        username: u.user.username,
-      }));
-    //   console.log(loggedUser);
-      return u;
     } catch (error) {
       console.log(error.message);
     }
@@ -73,7 +66,7 @@ const Notestate = ({ children }) => {
     }
   };
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("auth_token");
     localStorage.removeItem("user");
   };
   const [state,dispatch]=useReducer(Reducer,intialstate)

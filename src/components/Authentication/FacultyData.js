@@ -7,15 +7,16 @@ import NoteContext from "../../context/Notecontext";
 
 
 const FacultyData = () => {
-  const {fetchFacultyData} = useContext(NoteContext)
+  const {fetchFacultyData,fetchuserdata} = useContext(NoteContext)
   const navigate = useNavigate();
   const [credentials, setCredentials] = React.useState({
-    phoneno:"",
+    qualification:"",
     department: "",
     designation: "",
   });
-
-
+  React.useEffect(()=>{
+    fetchuserdata()
+  })
   const [errorArr, setErrorArr] = React.useState(false);
   const [errorArrMsg, setErrorArrMsg] = React.useState([]);
   const [error, setError] = React.useState(false);
@@ -50,7 +51,7 @@ const FacultyData = () => {
           'token': localStorage.getItem("auth_token"),
         },
         body: JSON.stringify({
-          phone: credentials.phoneno,
+          qualification: credentials.qualification,
           designation: credentials.designation,
           department: credentials.department,
         }),
@@ -90,21 +91,23 @@ const FacultyData = () => {
             className={styles.form}
             onSubmit={submitLoginForm}
           >
+            <div className={styles.formWrapper}>
             <div className={styles.errorMsg}>
               {errorArr ? errorArrMsg[0].msg : error ? errorMsg : ""}
             </div>
             {/* <div className={styles.errorMsg}>{error?errorMsg:""}</div> */}
             <div className={styles.inputControl}>
-              <label htmlFor="phoneno" className={styles.inputLabel} hidden>
-                Phone Number
+              <label htmlFor="qualification" className={styles.inputLabel} hidden>
+                Qualification
               </label>
               <input
-                type="number"
-                name="phoneno"
+                type="text"
+                name="qualification"
                 onChange={onChange}
-                id="phoneno"
+                id="qualification"
                 className={styles.inputField}
-                placeholder="Phone Number"
+                placeholder="Qualification"
+                value={credentials.qualification}
               />
             </div>
             <div className={styles.selectBox}>
@@ -149,6 +152,7 @@ const FacultyData = () => {
                 className={styles.inputSubmit}
                 value="Submit"
               />
+            </div>
             </div>
           </form>
         </section>

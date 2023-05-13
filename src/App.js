@@ -28,7 +28,6 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Dashboard />}></Route>
-          
             <Route path="/module_3" element={<HomePage getUserData={getUserData} />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>

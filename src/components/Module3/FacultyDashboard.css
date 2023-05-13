@@ -1,0 +1,154 @@
+:root {
+    --color-white: #ffffff;
+    --color-light: #f1f5f9;
+    --color-greenLight: #e7f8e9;
+    --color-black: #121212;
+    --color-night: #001632;
+  
+    --color-red: #f44336;
+    --color-blue: #127d82;
+    --color-hoverBlue: rgb(0, 105, 0);
+    --color-gray: #80868b;
+    --color-grayish: #dadce0;
+  
+    --shadow-normal: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+.back{
+    display: flex;
+    justify-content: right;
+    margin: 1rem 4rem;
+    font-size: 1rem;
+}
+.back a{
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+}
+.back img{
+    height: 3vh;
+}
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dashDetails{
+    margin: 12px 4rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 3rem 7rem;
+    width: 80%;
+    background-color: var(--color-blue);
+    color: white;
+}
+.dashDetails img{
+    width: 161px;
+    height: 160px;
+    background-color: var(--color-blue);
+    border-radius: 50%;
+    border: 2px solid var(--color-blue);
+}
+.dashDetails .name{
+    margin: 0 5rem;
+}
+.dashDetails .name h1{
+    margin-bottom: 2rem;
+    font-size: 3rem;
+}
+.dashDetails .name span{
+    background-color: rgb(255, 70, 70);
+    padding: .5rem;
+    font-size: 1.4rem;
+    border-radius: .5rem;
+}
+.grid{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.grid1{
+    width: 70%;
+}
+.grid2{
+    width: 25%;
+}
+.areaResearch .heading,.education .heading, .contact .heading{
+    font-size: 1.4rem;
+    color: var(--color-blue);
+}
+.areaResearch .box,.education .box,.contact .box{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    font-weight: 900;
+    border-radius: .75rem;
+    background-color: white;
+}
+.box ul{
+    padding: .5rem;
+    padding-left: 2rem;
+}
+.box li{
+    padding: .5rem 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: .1s;
+}
+.box li:hover{
+    transform: scale(1.05);
+}
+.box .addbtn{
+    background-color: var(--bgColor);
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .75rem 1rem;
+    height: 1vh;
+    font-size: 1.2rem;
+    border-radius: .25rem;
+}
+.box .editbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    height: 3vh;
+    border: 0;
+    background-color: var(--bgColor);
+    outline: none;
+    border-radius: .25rem;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: .1s;
+}
+.box .addbtn:hover, .box .editbtn:hover{
+    background-color: rgb(52, 52, 52);
+}
+.box .addbtn img ,.box .editbtn img{
+    height: 1rem;
+    margin-right: .5rem;
+}
+.box .details{
+    font-size: 1.2rem;
+    margin-bottom: 5rem; /* to be removed */
+}
+.box .details div{
+    margin: .5rem;
+}
+.contact .box{
+    height: 100%;
+}

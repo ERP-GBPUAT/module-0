@@ -1,0 +1,132 @@
+:root{
+    --bgColor:rgb(255, 255, 255);
+    --shadowColor:rgb(180, 180, 180);
+    --color:#127d82;
+}
+
+.homepage{
+    width: 100%;
+    margin: 40px 0px;
+}
+.heading{
+    margin: 10px 20px;
+    font-size: 40px;
+    font-weight: 900;
+}
+.navbarSelect{
+    margin: 0 20px;
+    background-color: var(--color);
+    border-radius: 90px;
+}
+.options{
+    display: flex;
+}
+.option1{
+    color: white;
+    border-radius: 90px;
+    padding: 10px;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: .1s;
+}
+.option1:hover{
+    color: rgb(153, 255, 0);
+    background-color: #139ca3;
+    font-weight: 600;
+}
+.options .active{
+    color: rgb(153, 255, 0);
+    background-color: #139ca3;
+    font-weight: 600;
+}
+.searchBox{
+    margin: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.searchicon{
+    width: 20px;
+    height: 20px;
+}
+.searchInput{
+    display: flex;
+    background-color: transparent;
+    border: 1px solid var(--color);
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 30px;
+}
+.searchInput input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 10px;
+}
+
+
+
+/* table styling */
+.mainBox{
+    display: flex;
+}
+.tableBox{
+    margin: 0 20px;
+    width:100%;
+}
+.table{
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--color);
+    overflow: hidden;
+}
+th{
+    text-align: left;
+    background-color: #139ca3;
+}
+tr{
+    width: 45px;
+}
+th,td{
+    color: white;
+    padding: 15px;
+}
+td{
+    cursor: pointer;
+}
+tr:hover{
+    background-color: #139ca3;
+}
+
+.filterBox{
+    cursor: pointer;
+    width: 25%;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: var(--color);
+    color: white;
+}
+
+.filterHead{
+    display: flex;
+    align-items: center;
+    background-color: #139ca3;
+    padding: 15px 20px;
+
+}
+.filterHead img{
+    margin: 0 5px;
+}
+.filterTypes{
+    margin: 10px;
+}
+.filterTypeHead{
+    padding: 5px 0;
+    font-size: 17px;
+    font-weight: 700;
+}
+th{
+    width: 12px;
+}

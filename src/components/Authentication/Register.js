@@ -59,7 +59,7 @@ const Register = () => {
       if (json.success) {
         localStorage.setItem("auth_token", json.token);
         fetchuserdata();
-        navigate("/facultyregister");
+        navigate("/userDetails");
       } else {
         if (json.errorType == "array") {
           setErrorArr(true);

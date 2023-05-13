@@ -8,7 +8,7 @@ import Register from "./components/Authentication/Register";
 import Notestate from "./context/Notestate";
 import HomePage from "./components/Module3/HomePage";
 import FacultyDashboard from "./components/Module3/FacultyDashboard";
-import FacultyData from "./components/Authentication/FacultyData";
+import UserDetails from "./components/Authentication/UserDetails";
 import NoteContext from "./context/Notecontext";
 import FacultyProfile from "./components/Module3/FacultyProfile";
 import ResearchDetails from "./components/Module3/ResearchDetails";
@@ -31,7 +31,7 @@ function App() {
             <Route path="/module_3" element={<HomePage getUserData={getUserData} />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
-            <Route path="/facultyregister" element={<FacultyData />}></Route>
+            <Route path="/userDetails" element={<UserDetails />}></Route>
             {/* <Route path="/facultyDashboard" element={<FacultyDashboard faculty={faculty} search={search} setFaculty={setFaculty} />} /> */}
             <Route path="/facultyDashboard" element={<FacultyProfile  />} />
             <Route path="/faculty/research/:id" element={<ResearchDetails/>} />

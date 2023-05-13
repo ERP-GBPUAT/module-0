@@ -6,7 +6,7 @@ import arrowDown from "../../Images/icons8-expand-arrow-50.png"
 import NoteContext from "../../context/Notecontext";
 
 
-const FacultyData = () => {
+const UserDetails = () => {
   const {fetchFacultyData,fetchuserdata} = useContext(NoteContext)
   const navigate = useNavigate();
   const [credentials, setCredentials] = React.useState({
@@ -161,4 +161,4 @@ const FacultyData = () => {
   );
 };
 
-export default FacultyData;
+export default UserDetails;

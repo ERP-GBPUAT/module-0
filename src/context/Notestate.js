@@ -11,7 +11,7 @@ const Notestate = ({ children }) => {
     Designation:[]
   }
  
-  const [loggedUser, setLoggedUser] = useState({id:null, email:"",username:"", faculty: {} });
+  const [loggedUser, setLoggedUser] = useState({user:{},details:{}});
   const link = "http://localhost:8080";
   const [loading, setLoading] = React.useState(false);
 
@@ -22,7 +22,7 @@ const Notestate = ({ children }) => {
     try {
       const requestHeaders = {
         "Content-type": "application/json",
-        token: localStorage.getItem("auth_token"),
+        "token": localStorage.getItem("auth_token"),
       };
       const resposne = await fetch(`http://localhost:8080/user/getUser`, {
         method: "GET",
@@ -31,12 +31,13 @@ const Notestate = ({ children }) => {
       const u = await resposne.json();
       console.log(u);
       localStorage.setItem("user", JSON.stringify(u.user));
+      setLoggedUser({...loggedUser,user:u.user});
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const fetchFacultyData = async () => {
+  const fetchUserDetails = async () => {
     try {
       const requestHeaders = {
         "Content-type": "application/json",
@@ -50,14 +51,13 @@ const Notestate = ({ children }) => {
         }
       );
       const u = await resposne.json();
-      if (u.success) {
+      if (u.msg==="success") {
         // localStorage.setItem("user", JSON.stringify(u));
         setLoggedUser({
           ...loggedUser,
-          faculty:u.user,
+          details:u.data,
         });
         console.log(u);
-        return u;
       }else{
         console.log(u.error);
       }
@@ -76,7 +76,7 @@ const Notestate = ({ children }) => {
       value={{
         link,
         fetchuserdata,
-        fetchFacultyData,
+        fetchUserDetails,
         logout,
         loggedUser,
         state,

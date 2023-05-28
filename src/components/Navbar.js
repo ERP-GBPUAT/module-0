@@ -8,7 +8,7 @@ import NoteContext from "../context/Notecontext";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { loggedUser, fetchFacultyData,logout } = useContext(NoteContext);
+  const { loggedUser, fetchUserDetails,logout } = useContext(NoteContext);
   const [openMenu,setOpenMenu] = React.useState(false);
   const handleMenu = ()=>{
     setOpenMenu(!openMenu)
@@ -16,7 +16,7 @@ const Navbar = () => {
   const handleProfile = () => {
     // fetchuserdata();
     setOpenMenu(false)
-    fetchFacultyData();
+    fetchUserDetails();
     console.log(loggedUser);
     navigate("/facultyDashboard");
   };
@@ -26,9 +26,7 @@ const Navbar = () => {
   }
   return (
     <>
-      {location.pathname === "/facultyDashboard" ? (
-        <></>
-      ) : (
+      
         <div className={styles.navbar}>
           <div className={styles.logo}>
             <img className={styles.navbarImg} src={gbpu} alt="GBPUAT" />
@@ -60,7 +58,6 @@ const Navbar = () => {
             )}
           </div>
         </div>
-      )}
     </>
   );
 };

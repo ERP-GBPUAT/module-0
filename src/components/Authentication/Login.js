@@ -13,7 +13,7 @@ const Login = () => {
 	const submitLoginForm = async (e) => {
 		e.preventDefault();
 		try {
-			const res = await fetch('http://localhost:8080/api/login', {
+			const res = await fetch('http://localhost:8080/user/login', {
 				method: "POST",
 				headers: {
 					"Content-type": "application/json"
@@ -25,7 +25,7 @@ const Login = () => {
 				console.log(json.token);
 				localStorage.setItem("auth_token", json.token)
 				fetchuserdata()
-				navigate("/module_3")
+				navigate("/")
 			} else {
 				setInvalidCredentials(true)
 				console.log(json.error);

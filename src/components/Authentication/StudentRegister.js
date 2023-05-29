@@ -41,8 +41,28 @@ const StudentRegister = () => {
     setStepOne(true)
     console.log(studentDetails);
   }
-  const onSubmitForm=(e)=>{
+  const onSubmitForm=async(e)=>{
     e.preventDefault();
+    try {
+      const res = await fetch('http://localhost:8080/student/register',{
+      method:"POST",
+      headers:{
+        "Content-type":"application/json",
+      },
+      body:{user:userData,student:studentDetails}
+    })
+    const data = res.json();
+    if(data.msg==="success"){
+      localStorage.setItem("token",data.data.token);
+      localStorage.setItem("user",data.data.data);
+    }
+    else if(data.msg==="failure"){
+      setError({...error,err:true,errMsg:data.data.error});
+    }
+    } catch (error) {
+      console.log(error);
+      setError({...error,err:true,errMsg:"Unable to Register. Please try again after sometime"});
+    }
     console.log(studentDetails);
   }
   return (

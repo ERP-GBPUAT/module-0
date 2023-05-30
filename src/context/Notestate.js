@@ -67,7 +67,7 @@ const Notestate = ({ children }) => {
   };
   const logout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.removeItem("data");
   };
   const [state,dispatch]=useReducer(Reducer,intialstate)
    

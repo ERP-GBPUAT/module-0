@@ -167,6 +167,34 @@ const FacultyForm = ({ facultyDetails,onSubmitForm,setFacultyDetails,error }) =>
               value={facultyDetails.deanOfCollege}
             />
           </div>
+          <div className={styles.inputControl}>
+            <label htmlFor="reseachInterests" className={styles.inputLabel} hidden>
+              Research Interests
+            </label>
+            <input
+              type="text"
+              name="reseachInterests"
+              onChange={onChangeFaculty}
+              id="reseachInterests"
+              className={styles.inputField}
+              placeholder="Reseach Interests"
+              value={facultyDetails.reseachInterests}
+            />
+          </div>
+          <div className={styles.inputControl}>
+            <label htmlFor="bioWebLink" className={styles.inputLabel} hidden>
+              Website Link
+            </label>
+            <input
+              type="text"
+              name="bioWebLink"
+              onChange={onChangeFaculty}
+              id="bioWebLink"
+              className={styles.inputField}
+              placeholder="Website Link"
+              value={facultyDetails.bioWebLink}
+            />
+          </div>
           {/* <div className={styles.inputControl}>
 					<label htmlFor="Cpassword" className={styles.inputLabel} hidden>Confirm Password</label>
 					<input type="password" name="cpassword" onChange={onChange} id="Cpassword" className={styles.inputField} placeholder="Confirm Password"/>

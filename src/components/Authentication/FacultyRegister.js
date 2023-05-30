@@ -34,6 +34,8 @@ const FacultyRegister = ({ sendMessage }) => {
     wardenOfHostel: "",
     deanOfCollege: "",
     hodOfDepartment: "",
+    researchInterests:"",
+    bioWebLink:""
   });
   const onChangeUser = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -53,6 +55,8 @@ const FacultyRegister = ({ sendMessage }) => {
             department:facultyDetails.department,
             designation:facultyDetails.designation,
             qualification:facultyDetails.qualification,
+            researchInterests:facultyDetails.researchInterests,
+            bioWebLink:facultyDetails.bioWebLink,
             wardenOfHostel: facultyDetails.wardenOfHostel === "NA" ? null : facultyDetails.wardenOfHostel,
             wardenOfHostel: facultyDetails.hodOfDepartment === "NA" ? null : facultyDetails.hodOfDepartment,
             wardenOfHostel: facultyDetails.deanOfCollege === "NA" ? null : facultyDetails.deanOfCollege,

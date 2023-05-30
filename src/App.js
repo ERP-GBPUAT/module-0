@@ -2,13 +2,14 @@ import React, { useEffect, useRef } from "react";
 import styles from "./App.module.css";
 import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter, useNavigate } from "react-router-dom";
 import Login from "./components/Authentication/Login";
 import Notestate from "./context/Notestate";
 import StudentRegister from "./components/Authentication/StudentRegister";
 import FacultyRegister from "./components/Authentication/FacultyRegister";
 import Register from "./components/Authentication/Register";
 function App() {
+  // const navigate = useNavigate()
   const [search,setSearch] = React.useState(false)
   const getUserData=(id)=>{
     console.log(id);
@@ -16,21 +17,27 @@ function App() {
   }
   // useEffect(() => {
     
-    const sendMessage=(data)=>{
-      const rec=document.getElementById('reciever')
-      const reciever = rec?.contentWindow;
-      // e.preventDefault();
-      let token = localStorage.getItem('token')
-      let user = localStorage.getItem('data');
-      // console.log(e);
-      console.log(token,"data",data);
-      reciever?.postMessage({token,user},'*')
-      // rec?.remove();
+    const sendMessage=()=>{
+      // e.preventDefault()
+      const rec1=document.getElementById('reciever1')
+      const rec2=document.getElementById('reciever2')
+      const reciever1 = rec1?.contentWindow;
+      const reciever2 = rec2?.contentWindow;
+        // e.preventDefault();
+        let token = localStorage.getItem('token')
+        let user = localStorage.getItem('data');
+        // console.log(e);
+        // console.log(token,"data",data);
+        reciever1?.postMessage({token,user},'*')
+        reciever2?.postMessage({token,user},'*')
+        // rec1?.remove();
+        // rec2?.remove()
     }
     useEffect(()=>{
-      if(localStorage.getItem('token')){
-        sendMessage({})
-      }
+      // if(localStorage.getItem('token') && localStorage.getItem('token')!=undefined){
+        sendMessage()
+      // }
+      // else navigate("/login")
     },[])
   // }, [])
   
@@ -48,7 +55,8 @@ function App() {
             <Route path="/studentRegister" element={<StudentRegister sendMessage={sendMessage} />}></Route>
           </Routes>
         </div>
-        <iframe id="reciever" src="http://localhost:3001" width={500} height={200} ><p>hello</p></iframe>
+        <iframe id="reciever1" src="http://localhost:3001" width={500} height={200} ><p>hello</p></iframe>
+        <iframe id="reciever2" src="http://localhost:3002" width={500} height={200} ><p>hello</p></iframe>
       </Notestate>
     </BrowserRouter>
   );

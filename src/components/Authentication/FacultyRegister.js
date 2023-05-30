@@ -58,8 +58,8 @@ const FacultyRegister = ({ sendMessage }) => {
             researchInterests:facultyDetails.researchInterests,
             bioWebLink:facultyDetails.bioWebLink,
             wardenOfHostel: facultyDetails.wardenOfHostel === "NA" ? null : facultyDetails.wardenOfHostel,
-            wardenOfHostel: facultyDetails.hodOfDepartment === "NA" ? null : facultyDetails.hodOfDepartment,
-            wardenOfHostel: facultyDetails.deanOfCollege === "NA" ? null : facultyDetails.deanOfCollege,
+            hodOfDepartment: facultyDetails.hodOfDepartment === "NA" ? null : facultyDetails.hodOfDepartment,
+            deanOfCollege: facultyDetails.deanOfCollege === "NA" ? null : facultyDetails.deanOfCollege,
           },
         }),
       });

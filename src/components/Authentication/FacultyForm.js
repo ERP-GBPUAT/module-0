@@ -125,6 +125,48 @@ const FacultyForm = ({ facultyDetails,onSubmitForm,setFacultyDetails,error }) =>
               })}
             </ul>
           </div>
+          <div className={styles.inputControl}>
+            <label htmlFor="wardenOfHostel" className={styles.inputLabel} hidden>
+              Warden of Hostel (if not NA)
+            </label>
+            <input
+              type="text"
+              name="wardenOfHostel"
+              onChange={onChangeFaculty}
+              id="wardenOfHostel"
+              className={styles.inputField}
+              placeholder="Warden of Hostel (if not NA)"
+              value={facultyDetails.wardenOfHostel}
+            />
+          </div>
+          <div className={styles.inputControl}>
+            <label htmlFor="hodOfDepartment" className={styles.inputLabel} hidden>
+              Head of Department (if not NA)
+            </label>
+            <input
+              type="text"
+              name="hodOfDepartment"
+              onChange={onChangeFaculty}
+              id="hodOfDepartment"
+              className={styles.inputField}
+              placeholder="Head of Department (if not NA)"
+              value={facultyDetails.hodOfDepartment}
+            />
+          </div>
+          <div className={styles.inputControl}>
+            <label htmlFor="deanOfCollege" className={styles.inputLabel} hidden>
+              Dean of College (if not NA)
+            </label>
+            <input
+              type="text"
+              name="deanOfCollege"
+              onChange={onChangeFaculty}
+              id="deanOfCollege"
+              className={styles.inputField}
+              placeholder="Dean of College (if not NA)"
+              value={facultyDetails.deanOfCollege}
+            />
+          </div>
           {/* <div className={styles.inputControl}>
 					<label htmlFor="Cpassword" className={styles.inputLabel} hidden>Confirm Password</label>
 					<input type="password" name="cpassword" onChange={onChange} id="Cpassword" className={styles.inputField} placeholder="Confirm Password"/>

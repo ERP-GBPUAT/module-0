@@ -17,13 +17,21 @@ function App() {
   // useEffect(() => {
     
     const sendMessage=(data)=>{
-      const reciever = document.getElementById('reciever').contentWindow;
+      const rec=document.getElementById('reciever')
+      const reciever = rec?.contentWindow;
       // e.preventDefault();
       let token = localStorage.getItem('token')
+      let user = localStorage.getItem('data');
       // console.log(e);
       console.log(token,"data",data);
-      reciever.postMessage({token},'*')
+      reciever?.postMessage({token,user},'*')
+      // rec?.remove();
     }
+    useEffect(()=>{
+      if(localStorage.getItem('token')){
+        sendMessage({})
+      }
+    },[])
   // }, [])
   
   return (

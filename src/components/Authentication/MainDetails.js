@@ -201,7 +201,7 @@ const MainDetails = ({userData,onSubmitUser,onChangeUser,error}) => {
               type="submit"
               name="submit"
               className={styles.inputSubmit}
-              value="Sign Up"
+              value="Next"
             />
           </div>
         </div>

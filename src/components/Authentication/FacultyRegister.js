@@ -2,8 +2,10 @@ import React,{useState} from "react";
 import FacultyForm from "./FacultyForm";
 import MainDetails from "./MainDetails";
 import styles from "./Login.module.css"
+import { useNavigate } from "react-router-dom";
 
 const FacultyRegister = () => {
+  const navigate = useNavigate()
   const [stepOne, setStepOne] = useState(false);
   const [error,setError] = useState({err:false,errMsg:"",errArr:false,errArrMsg:""})
 
@@ -24,9 +26,6 @@ const FacultyRegister = () => {
     department: "",
     designation: "",
     qualification: "",
-    wardenOfHostel: "",
-    hodOfDepartment: "",
-    deanOfCollege: "",
   });
   const onChangeUser = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -39,27 +38,30 @@ const FacultyRegister = () => {
       headers:{
         "Content-type":"application/json",
       },
-      body:{user:userData,faculty:facultyDetails}
+      body:JSON.stringify({user:userData,faculty:facultyDetails})
     })
-    const data = res.json();
+    const data = await res.json();
+    console.log(data);
     if(data.msg==="success"){
       localStorage.setItem("token",data.data.token);
-      localStorage.setItem("user",data.data.data);
+      localStorage.setItem("data",JSON.stringify(data.data.data));
+      navigate("/")
     }
-    else if(data.msg==="failure"){
-      setError({...error,err:true,errMsg:data.data.error});
+    else{
+      setError({...error,err:true,errMsg:data.error});
     }
-    } catch (error) {
-      console.log(error);
-      setError({...error,err:true,errMsg:"Unable to Register. Please try again after sometime"});
+    } catch (e) {
+      console.log(e);
+      setError({...error,err:true,errMsg:e});
+      // setError({...error,err:true,errMsg:"Unable to Register. Please try again after sometime"});
     }
-    console.log(facultyDetails);
+    // console.log(facultyDetails);
   }
   const onSubmitUser=async(e)=>{
     e.preventDefault();
     
     setStepOne(true)
-    console.log(facultyDetails);
+    // console.log(facultyDetails);
   }
   return (
     <main className={styles.main}>

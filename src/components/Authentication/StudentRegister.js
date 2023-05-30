@@ -49,18 +49,18 @@ const StudentRegister = () => {
       headers:{
         "Content-type":"application/json",
       },
-      body:{user:userData,student:studentDetails}
+      body:JSON.stringify({user:userData,student:studentDetails})
     })
-    const data = res.json();
+    const data = await res.json();
     if(data.msg==="success"){
       localStorage.setItem("token",data.data.token);
-      localStorage.setItem("user",data.data.data);
+      localStorage.setItem("data",JSON.stringify(data.data.data));
     }
     else if(data.msg==="failure"){
       setError({...error,err:true,errMsg:data.data.error});
     }
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
       setError({...error,err:true,errMsg:"Unable to Register. Please try again after sometime"});
     }
     console.log(studentDetails);

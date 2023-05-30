@@ -21,12 +21,12 @@ const Login = () => {
 				body: JSON.stringify({ email: credentials.email, password: credentials.password })
 			})
 			const json = await res.json();
-			if (json.success) {
-				console.log(json.token);
-				localStorage.setItem("auth_token", json.token)
-				fetchuserdata()
+			if (json.msg==="success") {
+				console.log(json.data.token);
+				localStorage.setItem("token", json.data.token)
+				localStorage.setItem("data", JSON.stringify(json.data.data))
 				navigate("/")
-			} else {
+			} else if(json.msg==="failure"){
 				setInvalidCredentials(true)
 				console.log(json.error);
 			}

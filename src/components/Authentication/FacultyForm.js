@@ -34,6 +34,20 @@ const FacultyForm = ({ facultyDetails,onSubmitForm,setFacultyDetails,error }) =>
           </div>
           {/* <div className={styles.errorMsg}>{error?errorMsg:""}</div> */}
           <div className={styles.inputControl}>
+            <label htmlFor="id" className={styles.inputLabel} hidden>
+              Faculty Id
+            </label>
+            <input
+              type="text"
+              name="id"
+              onChange={onChangeFaculty}
+              id="id"
+              className={styles.inputField}
+              placeholder="Faculty Id"
+              value={facultyDetails.id}
+            />
+          </div>
+          <div className={styles.inputControl}>
             <label htmlFor="qualification" className={styles.inputLabel} hidden>
               Qualification
             </label>

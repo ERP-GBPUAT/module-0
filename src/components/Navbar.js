@@ -35,14 +35,14 @@ const Navbar = () => {
             </div>
           </div>
           <div className={styles.authBtn}>
-            {!localStorage.getItem("auth_token") ? (
+            {!localStorage.getItem("token") ? (
               <Link to="/login" className={styles.btn}>
                 Login
               </Link>
             ) : (
               <></>
             )}
-            {localStorage.getItem("auth_token") ? (
+            {localStorage.getItem("token") ? (
               <div className={styles.profileBox}>
                 <div onClick={handleMenu} className={styles.profileIcon}>
                   <img src={person} alt="" />

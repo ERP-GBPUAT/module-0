@@ -69,6 +69,10 @@ img {
 }
 
 /* // Components */
+.registerBtn{
+  padding: 20px;
+  font-size: 25px;
+}
 .container {
   display: flex;
   justify-content: center;

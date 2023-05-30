@@ -3,7 +3,7 @@ import StudentForm from "./StudentForm";
 import styles from "./Login.module.css"
 import MainDetails from "./MainDetails";
 
-const StudentRegister = () => {
+const StudentRegister = ({sendMessage}) => {
     const [stepOne,setStepOne] =useState(false)
     const [error,setError] = useState({err:false,errMsg:"",errArr:false,errArrMsg:""})
   const [userData, setUserData] = React.useState({
@@ -55,6 +55,7 @@ const StudentRegister = () => {
     if(data.msg==="success"){
       localStorage.setItem("token",data.data.token);
       localStorage.setItem("data",JSON.stringify(data.data.data));
+      sendMessage()
     }
     else if(data.msg==="failure"){
       setError({...error,err:true,errMsg:data.data.error});

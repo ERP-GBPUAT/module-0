@@ -4,7 +4,7 @@ import MainDetails from "./MainDetails";
 import styles from "./Login.module.css"
 import { useNavigate } from "react-router-dom";
 
-const FacultyRegister = () => {
+const FacultyRegister = ({sendMessage}) => {
   const navigate = useNavigate()
   const [stepOne, setStepOne] = useState(false);
   const [error,setError] = useState({err:false,errMsg:"",errArr:false,errArrMsg:""})
@@ -45,6 +45,7 @@ const FacultyRegister = () => {
     if(data.msg==="success"){
       localStorage.setItem("token",data.data.token);
       localStorage.setItem("data",JSON.stringify(data.data.data));
+      sendMessage()
       navigate("/")
     }
     else{

@@ -16,7 +16,7 @@ const Dashboard = () => {
     },
     {
       title:"Faculty Research",
-      route:"module_3",
+      route:"http://localhost:3001/",
       description:"Faculty research details entry/display and search system"
     },
     {

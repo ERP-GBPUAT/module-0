@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NoteContext from "../../context/Notecontext";
 import styles from "./Login.module.css"
-const Login = () => {
+const Login = ({sendMessage}) => {
 	const { fetchuserdata, setLoggedUser } = useContext(NoteContext)
 	const navigate = useNavigate()
 	const [credentials, setCredentials] = React.useState({ email: "", password: "" })
@@ -25,6 +25,7 @@ const Login = () => {
 				console.log(json.data.token);
 				localStorage.setItem("token", json.data.token)
 				localStorage.setItem("data", JSON.stringify(json.data.data))
+				sendMessage(json.data.token,json.data.data)
 				navigate("/")
 			} else if(json.msg==="failure"){
 				setInvalidCredentials(true)

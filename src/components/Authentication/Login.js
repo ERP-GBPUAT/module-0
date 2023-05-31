@@ -23,7 +23,7 @@ const Login = ({sendMessage}) => {
 			const json = await res.json();
 			if (json.msg==="success") {
 				console.log(json.data.token);
-				localStorage.setItem("token",JSON.stringify( json.data.token))
+				localStorage.setItem("token",json.data.token)
 				localStorage.setItem("data", JSON.stringify(json.data.data))
 				sendMessage(json.data.token,json.data.data)
 				navigate("/")

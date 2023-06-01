@@ -23,6 +23,20 @@ const StudentForm = ({ studentDetails, onChangeStudent,onSubmitForm, error }) =>
         <div className={styles.formWrapper}>
           {/* <div className={styles.errorMsg}>{error?errorMsg:""}</div> */}
           <div className={styles.inputControl}>
+            <label htmlFor="id" className={styles.inputLabel}>
+              Student Id
+            </label>
+            <input
+              type="number"
+              name="id"
+              onChange={onChangeStudent}
+              id="id"
+              className={styles.inputField}
+              placeholder=""
+              value={studentDetails.id}
+            />
+          </div>
+          <div className={styles.inputControl}>
             <label htmlFor="degree" className={styles.inputLabel}>
               Degree
             </label>
@@ -143,6 +157,20 @@ const StudentForm = ({ studentDetails, onChangeStudent,onSubmitForm, error }) =>
               className={styles.inputField}
               placeholder=""
               value={studentDetails.parentEmail}
+            />
+          </div>
+          <div className={styles.inputControl}>
+            <label htmlFor="advisorId" className={styles.inputLabel}>
+              Advisor Id
+            </label>
+            <input
+              type="text"
+              name="FacultyId"
+              onChange={onChangeStudent}
+              id="advisorId"
+              className={styles.inputField}
+              placeholder=""
+              value={studentDetails.FacultyId}
             />
           </div>
           <div className={styles.inputControl}>

@@ -19,12 +19,14 @@ const StudentRegister = ({sendMessage}) => {
     dob: "",
   });
   const [studentDetails, setStudentDetails] = React.useState({
+    id:"",
     degree: "",
     discipline: "",
     fatherName: "",
     motherName: "",
     parentPhone: "",
     parentEmail: "",
+    FacultyId:"",
     hostel: "",
     roomNo: "",
     cgpa: "",

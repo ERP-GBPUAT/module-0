@@ -18,8 +18,7 @@ const StaffRegister = ({sendMessage}) => {
       name: "",
       email: "",
       password: "",
-      isStudent: false,
-      isFaculty: true,
+      isStaff:true,
       cpassword: "",
       gender: "",
       address: "",
@@ -36,33 +35,33 @@ const StaffRegister = ({sendMessage}) => {
     const onSubmitForm = async (e) => {
       e.preventDefault();
       try {
-        // const res = await fetch("http://localhost:8080/staff/register", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     user: userData,
-        //     staff: {
-        //       id:staffDetails.id,
-        //       isAdmin:staffDetails.type==="admin",
-        //       isLibrarian:staffDetails.type==="librarian",
-        //       isCCF:staffDetails.type==="ccf",
-        //       isComptroller:staffDetails.type==="comptroller",
-        //     },
-        //   }),
-        // });
-        // const data = await res.json();
-        // console.log(data);
-        // if (data.msg === "success") {
-        //   localStorage.setItem("token", data.data.token);
-        //   localStorage.setItem("data", JSON.stringify(data.data.data));
-        //   sendMessage();
-        //   navigate("/");
-        // } else {
-        //   setError({ ...error, err: true, errMsg: data.error });
-        // }
-        console.log("staff",staffDetails);
+        const res = await fetch("http://localhost:8080/staff/register", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            user: userData,
+            staff: {
+              id:staffDetails.id,
+              isAdmin:staffDetails.type==="admin",
+              isLibrarian:staffDetails.type==="librarian",
+              isCCF:staffDetails.type==="ccf",
+              isComptroller:staffDetails.type==="comptroller",
+            },
+          }),
+        });
+        const data = await res.json();
+        console.log(data);
+        if (data.msg === "success") {
+          localStorage.setItem("token", data.data.token);
+          localStorage.setItem("data", JSON.stringify(data.data.data));
+          sendMessage();
+          navigate("/");
+        } else {
+          setError({ ...error, err: true, errMsg: data.error });
+        }
+        // console.log("staff",staffDetails);
       } catch (e) {
         console.log(e);
         setError({ ...error, err: true, errMsg: e });

@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 import styles from "./Login.module.css";
 
-const StudentForm = ({ studentDetails, onChangeStudent,onSubmitForm, error }) => {
+const StudentForm = ({
+  studentDetails,
+  setStudentdetails,
+  onChangeStudent,
+  onSubmitForm,
+  error,
+}) => {
+  const [branch, setBranch] = useState();
+  const branches = [
+    { value: "Information technology", label: "Information technology" },
+    { value: "Computer engineering", label: "Computer engineering" },
+    { value: "Electrical engineering", label: "Electrical engineering" },
+    { value: "Mechanical engineering", label: "Mechanical engineering" },
+    { value: "Civil engineering", label: "Civil engineering" },
+    {
+      value: "Electronics and Communication engineering",
+      label: "Electroncics and Communication engineering",
+    },
+    {
+      value: "Industrial and Production engineering",
+      label: "Industrial and Production engineering",
+    },
+    { value: "Agriculture engineering", label: "Agriculture engineering" },
+  ];
+
+  const handleBranch = (branch) => {
+    setBranch(branch);
+    setStudentdetails({ ...studentDetails, discipline: branch.value });
+  };
   return (
     <section className={`${styles.wrapper} ${styles.regiWrapper}`}>
       <div className={styles.heading}>
@@ -89,14 +118,19 @@ const StudentForm = ({ studentDetails, onChangeStudent,onSubmitForm, error }) =>
             <label htmlFor="discipline" className={styles.inputLabel}>
               Discipline
             </label>
-            <input
-              type="text"
-              name="discipline"
-              onChange={onChangeStudent}
-              id="discipline"
-              className={styles.inputField}
-              placeholder=""
-              value={studentDetails.discipline}
+            <Select
+              options={branches}
+              onChange={handleBranch}
+              value={branch}
+              styles={{
+                control:(baseStyles,state)=>({
+                    ...baseStyles,
+                    backgroundColor:"rgb(221, 239, 255)",
+                    border:"none",
+                    borderRadius:"2rem",
+                    padding:".4rem 1rem"
+                })
+            }}
             />
           </div>
           <div className={styles.inputControl}>
@@ -125,6 +159,20 @@ const StudentForm = ({ studentDetails, onChangeStudent,onSubmitForm, error }) =>
               className={styles.inputField}
               placeholder=""
               value={studentDetails.motherName}
+            />
+          </div>
+          <div className={styles.inputControl}>
+            <label htmlFor="Batch" className={styles.inputLabel}>
+              Batch
+            </label>
+            <input
+              type="text"
+              name="batch"
+              onChange={onChangeStudent}
+              id="batch"
+              className={styles.inputField}
+              placeholder=""
+              value={studentDetails.batch}
             />
           </div>
         </div>
@@ -201,6 +249,7 @@ const StudentForm = ({ studentDetails, onChangeStudent,onSubmitForm, error }) =>
               value={studentDetails.roomNo}
             />
           </div>
+
           <div className={styles.inputControl}>
             {/* <a href="#" className={`${styles.text} ${styles.textLinks}`}>Forgot Password</a> */}
             <input

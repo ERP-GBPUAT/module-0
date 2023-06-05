@@ -72,7 +72,7 @@ const StudentRegister = ({sendMessage}) => {
     <main className={styles.main}>
       <div className={styles.container}>
         {stepOne ? (
-          <StudentForm studentDetails={studentDetails} onSubmitForm={onSubmitForm} onChangeStudent={onChangeStudent} error={error} />
+          <StudentForm studentDetails={studentDetails} setStudentDetails={setStudentDetails} onSubmitForm={onSubmitForm} onChangeStudent={onChangeStudent} error={error} />
         ) : (
           <MainDetails userData={userData} onChangeUser={onChangeUser} onSubmitUser={onSubmitUser} error={error} />
         )}

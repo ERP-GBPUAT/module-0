@@ -5,7 +5,7 @@ import styles from "./Login.module.css";
 
 const StudentForm = ({
   studentDetails,
-  setStudentdetails,
+  setStudentDetails,
   onChangeStudent,
   onSubmitForm,
   error,
@@ -30,7 +30,7 @@ const StudentForm = ({
 
   const handleBranch = (branch) => {
     setBranch(branch);
-    setStudentdetails({ ...studentDetails, discipline: branch.value });
+    setStudentDetails({ ...studentDetails, discipline: branch.value });
   };
   return (
     <section className={`${styles.wrapper} ${styles.regiWrapper}`}>

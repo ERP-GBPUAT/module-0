@@ -2,8 +2,10 @@ import React,{useState} from "react";
 import StudentForm from "./StudentForm";
 import styles from "./Login.module.css"
 import MainDetails from "./MainDetails";
+import { useNavigate } from "react-router-dom";
 
 const StudentRegister = ({sendMessage}) => {
+  const navigate = useNavigate()
     const [stepOne,setStepOne] =useState(false)
     const [error,setError] = useState({err:false,errMsg:"",errArr:false,errArrMsg:""})
   const [userData, setUserData] = React.useState({
@@ -12,6 +14,7 @@ const StudentRegister = ({sendMessage}) => {
     password: "",
     isStudent:true,
     isFaculty:false,
+    isStaff:false,
     cpassword: "",
     gender: "",
     address: "",
@@ -29,7 +32,7 @@ const StudentRegister = ({sendMessage}) => {
     FacultyId:"",
     hostel: "",
     roomNo: "",
-    cgpa: "",
+    cgpa: 0,
     batch: "",
   });
   const onChangeStudent = (e)=>{
@@ -51,12 +54,27 @@ const StudentRegister = ({sendMessage}) => {
       headers:{
         "Content-type":"application/json",
       },
-      body:JSON.stringify({user:userData,student:studentDetails})
+      body:JSON.stringify({user:userData,student:{
+        id:studentDetails.id,
+        discipline:studentDetails.discipline,
+        degree:studentDetails.degree,
+        fatherName:studentDetails.fatherName,
+        motherName:studentDetails.motherName,
+        parentPhone:studentDetails.parentPhone,
+        parentEmail:studentDetails.parentEmail,
+        FacultyId:studentDetails.FacultyId,
+        hostel:studentDetails.hostel,
+        roomNo:studentDetails.roomNo,
+        cgpa:studentDetails.cgpa,
+        batch:studentDetails.batch
+      }})
     })
     const data = await res.json();
+    console.log(data);
     if(data.msg==="success"){
       localStorage.setItem("token",data.data.token);
       localStorage.setItem("data",JSON.stringify(data.data.data));
+      navigate("/")
       sendMessage()
     }
     else if(data.msg==="failure"){
@@ -66,7 +84,8 @@ const StudentRegister = ({sendMessage}) => {
       console.log(e);
       setError({...error,err:true,errMsg:"Unable to Register. Please try again after sometime"});
     }
-    console.log(studentDetails);
+    console.log(JSON.stringify(studentDetails));
+    console.log(userData);
   }
   return (
     <main className={styles.main}>

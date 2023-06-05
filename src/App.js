@@ -8,6 +8,7 @@ import Notestate from "./context/Notestate";
 import StudentRegister from "./components/Authentication/StudentRegister";
 import FacultyRegister from "./components/Authentication/FacultyRegister";
 import Register from "./components/Authentication/Register";
+import StaffRegister from "./components/Authentication/StaffRegister";
 function App() {
   // const navigate = useNavigate()
   const [search,setSearch] = React.useState(false)
@@ -53,6 +54,7 @@ function App() {
 
             <Route path="/facultyRegister" element={<FacultyRegister sendMessage={sendMessage} />}></Route>
             <Route path="/studentRegister" element={<StudentRegister sendMessage={sendMessage} />}></Route>
+            <Route path="/staffRegister" element={<StaffRegister sendMessage={sendMessage} />}></Route>
           </Routes>
         </div>
         <iframe id="reciever1" src="http://localhost:3001" width={500} height={200} ><p>hello</p></iframe>

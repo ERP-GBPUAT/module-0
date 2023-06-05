@@ -9,6 +9,7 @@ const Register = () => {
       <div className={styles.container}>
         <Link className={styles.registerBtn} to={"/studentRegister"} >Register as Student</Link>
         <Link className={styles.registerBtn} to={"/facultyRegister"} >Register as Faculty</Link>
+        <Link className={styles.registerBtn} to={"/staffRegister"} >Register as Staff</Link>
       </div>
     </main>
   );

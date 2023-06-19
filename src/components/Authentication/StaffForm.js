@@ -19,14 +19,7 @@ const StaffForm = ({ setStaffDetails,error, staffDetails ,onSubmitForm }) => {
     setStaffDetails({...staffDetails,type:role?.value});
   };
   return (
-    <section className={styles.wrapper}>
-      <div className={styles.heading}>
-        <h1 className={`${styles.text} ${styles.textLarge}`}>
-          Staff Information
-        </h1>
-        {/* <p className={`${styles.text} ${styles.textNormal}`}>Already a user? <span><Link to="/login" className={`${styles.text} ${styles.textLinks}`}>Sign in</Link></span> */}
-        {/* </p> */}
-      </div>
+    
       <form name="signin" className={styles.form} onSubmit={onSubmitForm}>
         <div className={styles.formWrapper}>
           <div className={styles.errorMsg}>
@@ -82,7 +75,6 @@ const StaffForm = ({ setStaffDetails,error, staffDetails ,onSubmitForm }) => {
           </div>
         </div>
       </form>
-    </section>
   );
 };
 

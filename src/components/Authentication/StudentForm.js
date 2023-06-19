@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Select from "react-select";
 import styles from "./Login.module.css";
 
@@ -8,9 +7,11 @@ const StudentForm = ({
   setStudentDetails,
   onChangeStudent,
   onSubmitForm,
-  error,
+  setStepOne,
+  email
 }) => {
   const [branch, setBranch] = useState();
+  const [degree, setDegree] = useState();
   const branches = [
     { value: "Information technology", label: "Information technology" },
     { value: "Computer engineering", label: "Computer engineering" },
@@ -28,29 +29,40 @@ const StudentForm = ({
     { value: "Agriculture engineering", label: "Agriculture engineering" },
   ];
 
+  const degrees = [
+    { value: "Bachelor of technology", label: "Bachelor of technology" },
+    { value: "Master of technology", label: "Master of technology" },
+    { value: "MCA", label: "MCA" },
+    { value: "Ph.D", label: "Ph.D" },
+  ];
   const handleBranch = (branch) => {
     setBranch(branch);
     setStudentDetails({ ...studentDetails, discipline: branch.value });
   };
+  const handleDegree = (degree) => {
+    setDegree(degree);
+    setStudentDetails({ ...studentDetails, degree: degree.value });
+  };
   return (
-    <section className={`${styles.wrapper} ${styles.regiWrapper}`}>
-      <div className={styles.heading}>
-        <h1 className={`${styles.text} ${styles.textLarge}`}>Sign Up</h1>
-        <p className={`${styles.text} ${styles.textNormal}`}>
-          Already a user?{" "}
-          <span>
-            <Link to="/login" className={`${styles.text} ${styles.textLinks}`}>
-              Sign in
-            </Link>
-          </span>
-        </p>
-      </div>
-      <div className={styles.errorMsg}>
-        {error.errArr ? error.errArrMsg[0].msg : error.err ? error.errMsg : ""}
-      </div>
+    
       <form name="signin" className={styles.form} onSubmit={onSubmitForm}>
         <div className={styles.formWrapper}>
           {/* <div className={styles.errorMsg}>{error?errorMsg:""}</div> */}
+          <div className={styles.inputControl}>
+            <label htmlFor="email" className={styles.inputLabel}>
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              onChange={onChangeStudent}
+              id="email"
+              className={styles.inputField}
+              placeholder=""
+              value={email}
+              disabled={true}
+            />
+          </div>
           <div className={styles.inputControl}>
             <label htmlFor="id" className={styles.inputLabel}>
               Student Id
@@ -69,14 +81,19 @@ const StudentForm = ({
             <label htmlFor="degree" className={styles.inputLabel}>
               Degree
             </label>
-            <input
-              type="text"
-              name="degree"
-              onChange={onChangeStudent}
-              id="degree"
-              className={styles.inputField}
-              placeholder=""
-              value={studentDetails.degree}
+            <Select
+              options={degrees}
+              value={degree}
+              onChange={handleDegree}
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  backgroundColor: "rgb(221, 239, 255)",
+                  border: "none",
+                  borderRadius: "2rem",
+                  padding: ".4rem 1rem",
+                }),
+              }}
             />
           </div>
           {/* <div className={styles.inputControl}>
@@ -123,14 +140,14 @@ const StudentForm = ({
               onChange={handleBranch}
               value={branch}
               styles={{
-                control:(baseStyles,state)=>({
-                    ...baseStyles,
-                    backgroundColor:"rgb(221, 239, 255)",
-                    border:"none",
-                    borderRadius:"2rem",
-                    padding:".4rem 1rem"
-                })
-            }}
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  backgroundColor: "rgb(221, 239, 255)",
+                  border: "none",
+                  borderRadius: "2rem",
+                  padding: ".4rem 1rem",
+                }),
+              }}
             />
           </div>
           <div className={styles.inputControl}>
@@ -162,11 +179,24 @@ const StudentForm = ({
             />
           </div>
           <div className={styles.inputControl}>
+            {/* <a href="#" className={`${styles.text} ${styles.textLinks}`}>Forgot Password</a> */}
+            <input
+              type="button"
+              className={styles.inputSubmit}
+              value="Previous"
+              onClick={()=>setStepOne(false)}
+            />
+          </div>
+        </div>
+
+        <div className={styles.formWrapper}>
+          {/* <div className={styles.errorMsg}>{error?errorMsg:""}</div> */}
+          <div className={styles.inputControl}>
             <label htmlFor="Batch" className={styles.inputLabel}>
               Batch
             </label>
             <input
-              type="text"
+              type="number"
               name="batch"
               onChange={onChangeStudent}
               id="batch"
@@ -175,10 +205,6 @@ const StudentForm = ({
               value={studentDetails.batch}
             />
           </div>
-        </div>
-        <div className={styles.vr}></div>
-        <div className={styles.formWrapper}>
-          {/* <div className={styles.errorMsg}>{error?errorMsg:""}</div> */}
           <div className={styles.inputControl}>
             <label htmlFor="parentPhone" className={styles.inputLabel}>
               Parent phone number
@@ -240,7 +266,7 @@ const StudentForm = ({
               Room No.
             </label>
             <input
-              type="text"
+              type="number"
               name="roomNo"
               onChange={onChangeStudent}
               id="roomNo"
@@ -261,7 +287,6 @@ const StudentForm = ({
           </div>
         </div>
       </form>
-    </section>
   );
 };
 

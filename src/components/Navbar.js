@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import gbpu from "../Images/gbpu.png";
 import styles from "./Navbar.module.css";
 import person from "../Images/icons8-person-64.png";
@@ -7,7 +7,6 @@ import NoteContext from "../context/Notecontext";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const { loggedUser, fetchUserDetails,logout } = useContext(NoteContext);
   const [openMenu,setOpenMenu] = React.useState(false);
   const handleMenu = ()=>{

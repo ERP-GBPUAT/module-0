@@ -3,7 +3,6 @@ import NoteContext from "./Notecontext";
 import { useReducer } from "react";
 import {Reducer} from "./Reducer";
 import {useContext} from"react"
-import { useNavigate } from "react-router-dom";
 
 const Notestate = ({ children }) => {
   const intialstate={
@@ -13,7 +12,6 @@ const Notestate = ({ children }) => {
  
   const [loggedUser, setLoggedUser] = useState({user:{},details:{}});
   const link = "http://localhost:8080";
-  const [loading, setLoading] = React.useState(false);
 
   const fetchuserdata = async () => {
 

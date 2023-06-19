@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import NoteContext from "../../context/Notecontext";
 import styles from "./Login.module.css"
 const Login = ({sendMessage}) => {
-	const { fetchuserdata, setLoggedUser } = useContext(NoteContext)
 	const navigate = useNavigate()
 	const [credentials, setCredentials] = React.useState({ email: "", password: "" })
 	const [invalidCredentials, setInvalidCredentials] = React.useState(false)
@@ -21,6 +19,7 @@ const Login = ({sendMessage}) => {
 				body: JSON.stringify({ email: credentials.email, password: credentials.password })
 			})
 			const json = await res.json();
+			console.log(json);
 			if (json.msg==="success") {
 				console.log(json.data.token);
 				localStorage.setItem("token",json.data.token)
@@ -58,7 +57,7 @@ const Login = ({sendMessage}) => {
 								<input type="password" name="password" onChange={onChange} id="password" className={styles.inputField} placeholder="Password" />
 							</div>
 							<div className={styles.inputControlBox}>
-								<a href="#" className={`${styles.text} ${styles.textLinks}`}>Forgot Password</a>
+								<Link to="/" className={`${styles.text} ${styles.textLinks}`}>Forgot Password</Link>
 								<input type="submit" name="submit" className={styles.inputSubmit} value="Sign In" />
 							</div>
 						</div>

@@ -81,7 +81,7 @@ img {
   width: 100%;
   padding: 0 2rem;
   margin: 0 auto;
-  height: 90vh;
+  height: 100vh;
 }
 
 .text {
@@ -246,6 +246,7 @@ img {
   color: var(--color-red);
   padding: 16px;
   width: 100%;
+  font-weight: 600;
   display: flex;
   justify-content: center;
 }

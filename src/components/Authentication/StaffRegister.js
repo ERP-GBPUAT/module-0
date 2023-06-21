@@ -28,7 +28,10 @@ const StaffRegister = ({ sendMessage }) => {
   });
   const [staffDetails, setStaffDetails] = React.useState({
     id: "",
-    type: "",
+    isAdmin:false,
+    isComptroller:false,
+    isCCF:false,
+    isLibrarian:false
   });
   const onChangeUser = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -98,13 +101,13 @@ const StaffRegister = ({ sendMessage }) => {
               </span>
             </p>
           </div>
-          <div className={styles.errorMsg}>
+          {/* <div className={styles.errorMsg}>
             {error.errArr
               ? error.errArrMsg[0].msg
               : error.err
               ? error.errMsg
               : ""}
-          </div>
+          </div> */}
           <h3>
             Staff Information
           </h3>
@@ -116,6 +119,7 @@ const StaffRegister = ({ sendMessage }) => {
               setStaffDetails={setStaffDetails}
               onSubmitForm={onSubmitForm}
               error={error}
+              setStepOne={setStepOne}
             />
           ) : (
             <MainDetails

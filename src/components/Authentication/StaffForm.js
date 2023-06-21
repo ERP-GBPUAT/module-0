@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Login.module.css";
 import Select from "react-select";
 
-const StaffForm = ({ setStaffDetails,error, staffDetails ,onSubmitForm }) => {
+const StaffForm = ({ setStaffDetails,setStepOne,error, staffDetails ,onSubmitForm }) => {
   const [role, setRole] = useState();
   const options = [
     { value: "librarian", label: "Librarian" },
@@ -72,6 +72,17 @@ const StaffForm = ({ setStaffDetails,error, staffDetails ,onSubmitForm }) => {
               className={styles.inputSubmit}
               value="Submit"
             />
+          </div>
+          <div className={styles.inputControl} >
+            {/* <a href="#" className={`${styles.text} ${styles.textLinks}`}>Forgot Password</a> */}
+            <button
+            onClick={()=>setStepOne(false)}
+              className={styles.inputSubmit}
+              style={{display:"flex",justifyContent:"center"}}
+              // value="Previous"
+            >
+              Previous
+              </button>
           </div>
         </div>
       </form>
